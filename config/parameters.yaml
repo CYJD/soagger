@@ -1,0 +1,22 @@
+parameters:
+  # Siteweb Name
+  name:               "%env(SITENAME)"
+
+  # Language
+  locale:             "%env(LOCALE)%"
+
+  # IP/Domain DB Prod (IONOS)
+  # database_host:    db5011205727.hosting-data.io
+
+  # IP/Domain DB Dev
+  database_host:      "%env(HOST)%"
+
+  # Common parameters
+  database_driver:    '%env(DRIVER)%'
+  database_port:      '%env(PORT)%'
+  database_name:      "%env(DBNAME)%"
+  database_user:      "%env(USER)%"
+  database_password:  "%env(PASSWORD)%"
+
+  # Google analytics
+  tag_analytics:      "%env(TAG_ANALYTICS)%"
