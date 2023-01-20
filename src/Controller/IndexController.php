@@ -2,25 +2,30 @@
 
 namespace App\Controller;
 
-use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class IndexController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(Request $request, ManagerRegistry $doctrine): Response
+    public function index(): Response
     {
-        $ws="";
+		$wsdl = "http://atlas-prep-se.cartercash.com:10000/catalogue.svc?wsdl";
+		
+		$file = fopen($wsdl, 'r');
+		
+		while(! feof($file)) {
+			$line = fgets($file);
+		}
+		dump($line);
+		fclose($file);
 
-
-
-
-
+		$crc = crc32($line);
+		dump($crc);
+		
         return $this->render('home/index.html.twig', [
-            'ws' => $ws
+            'controller_name' => 'IndexController',
         ]);
     }
 }
